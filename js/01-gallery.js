@@ -32,13 +32,13 @@ galleryContainer.addEventListener("click", (event) => {
       `<img src="${largeImageUrl}" alt="Image description" />`
     );
     lightbox.show();
+
+    document.addEventListener("keydown", escapePress);
+    function escapePress(eventKey) {
+      if (eventKey.code === "Escape") {
+        lightbox.close();
+        document.removeEventListener("keydown", escapePress);
+      }
+    }
   }
 });
-
-document.addEventListener("keydown", escapePress);
-function escapePress(eventKey) {
-  if (eventKey.code === "Escape") {
-    lightbox.close();
-    document.removeEventListener("keydown", escapePress);
-  }
-}
